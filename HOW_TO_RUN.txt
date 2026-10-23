@@ -1,0 +1,48 @@
+╔══════════════════════════════════════════════════════════════════╗
+║           HOW TO RUN — EK-MIKHA + SIKHYA SUCHAK                ║
+╚══════════════════════════════════════════════════════════════════╝
+
+You need 3 terminal windows running simultaneously.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TERMINAL 1 — AMS Node.js Backend  (Port 3001)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  cd Administration_management_system\backend
+  node server.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TERMINAL 2 — Sikhya Suchak FastAPI ML Server  (Port 8001)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  cd Administration_management_system\sikhya_suchak
+  python -m uvicorn main:app --reload --port 8001
+
+  ONE-TIME ONLY (first time setup):
+    python -m pip install -r requirements.txt
+    python -m ml.train
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TERMINAL 3 — React Frontend  (Port 5173)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  cd Administration_management_system\frontend
+  npm run dev
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ACCESS THE APPLICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Main App      : http://localhost:5173
+  AMS API       : http://localhost:3001
+  ML API        : http://localhost:8001
+  ML API Docs   : http://localhost:8001/docs
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SIKHYA SUCHAK MODULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Login as Admin/Teacher/Student → Sidebar → Sikhya Suchak
+
+  Best Model   : XGBoost  (94.44% Accuracy, 94.44% F1-Score)
+  Students     : 42 students with real attendance + marks data
+  Risk Levels  : Low / Medium / High with personalised recommendations
+
+═══════════════════════════════════════════════════════════════════

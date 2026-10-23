@@ -1,0 +1,66 @@
+{
+  "best_model": "XGBoost",
+  "feature_names": [
+    "attendance_pct",
+    "assignment_score",
+    "quiz_score",
+    "midterm_marks",
+    "internal_marks",
+    "lab_marks",
+    "previous_gpa",
+    "study_hours",
+    "extra_activities"
+  ],
+  "class_names": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "models": [
+    {
+      "name": "Decision Tree",
+      "accuracy": 91.67,
+      "precision": 92.03,
+      "recall": 91.67,
+      "f1": 91.53,
+      "roc_auc": 97.56,
+      "cv_score": 84.56
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 90.28,
+      "precision": 90.43,
+      "recall": 90.28,
+      "f1": 90.19,
+      "roc_auc": 98.99,
+      "cv_score": 89.12
+    },
+    {
+      "name": "Logistic Regression",
+      "accuracy": 91.67,
+      "precision": 91.75,
+      "recall": 91.67,
+      "f1": 91.48,
+      "roc_auc": 98.91,
+      "cv_score": 84.21
+    },
+    {
+      "name": "SVM",
+      "accuracy": 86.11,
+      "precision": 86.11,
+      "recall": 86.11,
+      "f1": 86.11,
+      "roc_auc": 97.28,
+      "cv_score": 82.11
+    },
+    {
+      "name": "XGBoost",
+      "accuracy": 94.44,
+      "precision": 94.44,
+      "recall": 94.44,
+      "f1": 94.44,
+      "roc_auc": 99.31,
+      "cv_score": 84.56
+    }
+  ]
+}

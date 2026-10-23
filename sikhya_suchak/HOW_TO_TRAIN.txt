@@ -1,0 +1,63 @@
+╔══════════════════════════════════════════════════════════════╗
+║        SIKHYA SUCHAK — ML TRAINING GUIDE                    ║
+╚══════════════════════════════════════════════════════════════╝
+
+STEP 1: Install dependencies
+─────────────────────────────
+  cd ADM/Administration_management_system/sikhya_suchak
+  pip install -r requirements.txt
+
+
+STEP 2: Train the ML model
+───────────────────────────
+  python ml/train.py
+
+This will:
+  ✓ Download the UCI Student Performance dataset automatically
+  ✓ Clean and preprocess the data
+  ✓ Train 5 models: Decision Tree, Random Forest,
+                    Logistic Regression, SVM, XGBoost
+  ✓ Compare all models (Accuracy, Precision, Recall, F1, ROC-AUC)
+  ✓ Select the best model
+  ✓ Save to: ml/models/best_model.pkl
+             ml/models/scaler.pkl
+             ml/models/label_encoder.pkl
+             ml/models/model_metrics.json
+  ✓ Save plots to: ml/plots/
+
+
+STEP 3: Start the API server
+──────────────────────────────
+  uvicorn main:app --reload --port 8001
+
+  Docs: http://localhost:8001/docs
+  Health: http://localhost:8001/
+  Model status: http://localhost:8001/model-status
+  Model metrics: http://localhost:8001/model-metrics
+
+
+STEP 4: Test the ML prediction
+────────────────────────────────
+  POST http://localhost:8001/predict-ml
+
+  Body:
+  {
+    "attendance_pct":   85.0,
+    "assignment_score": 72.0,
+    "quiz_score":       65.0,
+    "midterm_marks":    70.0,
+    "internal_marks":   68.0,
+    "lab_marks":        75.0,
+    "previous_gpa":     3.1,
+    "study_hours":      5.0,
+    "extra_activities": 1
+  }
+
+
+NOTES:
+  - The rule-based endpoint (POST /predict) still works as a fallback
+  - Training takes ~30–60 seconds depending on your machine
+  - XGBoost is optional. If not installed, training skips it automatically
+  - Dataset is downloaded once and cached in the data/ folder
+
+═══════════════════════════════════════════════════════════════
